@@ -44,7 +44,7 @@ module.exports = React.createClass({
     for(var x = m.year() - 100; x <= m.year(); x++) {
       years.push(x);
     }
-    for(var x = m.year() + 100; x > m.year(); x--) {
+    for(var x = m.year()+1; x <= m.year()+ 100; x++) {
       years.push(x);
     }
     
@@ -55,17 +55,12 @@ module.exports = React.createClass({
             <i className={this.props.prevMonthIcon}/>
           </button>
           <span className="current-date">
-          <select value={m.format('MMMM')}>
-            {months.map((mn, i) => <option key={i} value={mn}>{mn}</option>)}
+          <select value={m.format('MMMM')} >
+            {months.map((mn, i) => <option key={i} onSelect={this.selectMonth.bind(this,i)} value={mn}>{mn}</option>)}
           </select>
           <select value={m.format('YYYY')}>
-            {years.map((y, i) => <option key={i} value={y}>{y}</option>)}
+            {years.map((y, i) => <option key={i} onSelect={this.selectMonth.bind(this,y)}  value={y}>{y}</option>)}
           </select>
-
-          {m.format('MMMM YYYY')}
-
-
-
           </span>
           <button type="button" className="next-month" onClick={this.nextMonth}>
             <i className={this.props.nextMonthIcon}/>
@@ -94,7 +89,17 @@ module.exports = React.createClass({
       </div>
     );
   },
+  selectMonth(month) {
+    var m = this.props.moment;
+    m.month(month);
+    this.props.onChange(m);
+  },
+  selectYear(year) {
+    var m = this.props.moment;
+    m.year(year);
+    this.props.onChange(m);
 
+  },
   selectDate(i, w) {
     var prevMonth = (w === 0 && i > 7);
     var nextMonth = (w >= 4 && i <= 14);

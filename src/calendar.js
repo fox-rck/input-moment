@@ -56,7 +56,7 @@ module.exports = React.createClass({
           </button>
           <span className="current-date">
           <select value={m.format('M')} onChange={this.selectMonth}>
-            {months.map((mn, i) => <option key={i} value={i}>{mn}</option>)}
+            {months.map((mn, i) => <option key={i} value={i+1}>{mn}</option>)}
           </select>
           <select value={m.format('YYYY')} onChange={this.selectYear}>
             {years.map((y, i) => <option key={i} value={y}>{y}</option>)}
@@ -91,10 +91,11 @@ module.exports = React.createClass({
   },
   selectMonth(e) {
     var m = this.props.moment;
-    console.log(m)
-    var newDate = m.clone().month((e.target.value)+1);
+    console.log(m)]
+    console.log(e.target.value)
+    var newDate = m.clone().month((e.target.value));
     console.log(newDate);
-    var monthsDiff = m.diff(newDate, 'months', true);
+    var monthsDiff = newDate.diff(m, 'months', true);
     console.log(monthsDiff);
     this.props.onChange(this.props.moment.add(monthsDiff, 'month'));
   },

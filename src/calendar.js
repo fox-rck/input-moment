@@ -91,7 +91,7 @@ module.exports = React.createClass({
   },
   selectMonth(e) {
     var m = this.props.moment;
-    console.log(m)]
+    console.log(m);
     console.log(e.target.value)
     var newDate = m.clone().month((e.target.value));
     console.log(newDate);

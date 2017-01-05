@@ -40,7 +40,7 @@ module.exports = React.createClass({
 
     var weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     var months = moment.months(); //.monthsShort();
-    var years = = [];
+    var years = [];
     for(var x = 0; x < m.year(); x++) {
       years.push(x);
     }

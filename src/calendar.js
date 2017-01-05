@@ -55,11 +55,11 @@ module.exports = React.createClass({
             <i className={this.props.prevMonthIcon}/>
           </button>
           <span className="current-date">
-          <select value={m.format('MMMM')} >
-            {months.map((mn, i) => <option key={i} onSelect={this.selectMonth.bind(this,i)} value={mn}>{mn}</option>)}
+          <select value={m.format('M')} onChange={this.selectMonth}>
+            {months.map((mn, i) => <option key={i} value={i}>{mn}</option>)}
           </select>
           <select value={m.format('YYYY')}>
-            {years.map((y, i) => <option key={i} onSelect={this.selectMonth.bind(this,y)}  value={y}>{y}</option>)}
+            {years.map((y, i) => <option key={i} onSelect={this.selectMonth.bind(null,y)}  value={y}>{y}</option>)}
           </select>
           </span>
           <button type="button" className="next-month" onClick={this.nextMonth}>

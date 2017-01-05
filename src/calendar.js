@@ -95,6 +95,7 @@ module.exports = React.createClass({
     var newDate = m.clone().month((e.target.value)+1);
     console.log(newDate);
     var monthsDiff = m.diff(newDate, 'months', true);
+    console.log(monthsDiff);
     this.props.onChange(this.props.moment.add(monthsDiff, 'month'));
   },
   selectYear(e) {

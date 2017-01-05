@@ -92,8 +92,7 @@ module.exports = React.createClass({
   selectMonth(e) {
     var m = this.props.moment;
     m.month(e.target.value);
-    if(prevMonth) m.subtract(1, 'month');
-    if(nextMonth) m.add(1, 'month');
+    m.add(1, 'month');
     this.props.onChange(m);
   },
   selectYear(e) {

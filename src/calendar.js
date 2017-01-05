@@ -58,8 +58,8 @@ module.exports = React.createClass({
           <select value={m.format('M')} onChange={this.selectMonth}>
             {months.map((mn, i) => <option key={i} value={i}>{mn}</option>)}
           </select>
-          <select value={m.format('YYYY')}>
-            {years.map((y, i) => <option key={i} onSelect={this.selectMonth.bind(null,y)}  value={y}>{y}</option>)}
+          <select value={m.format('YYYY')} onChange={this.selectYear}>
+            {years.map((y, i) => <option key={i} value={y}>{y}</option>)}
           </select>
           </span>
           <button type="button" className="next-month" onClick={this.nextMonth}>
@@ -89,14 +89,14 @@ module.exports = React.createClass({
       </div>
     );
   },
-  selectMonth(month) {
+  selectMonth(e) {
     var m = this.props.moment;
-    m.month(month);
+    m.month(e.target.value);
     this.props.onChange(m);
   },
-  selectYear(year) {
+  selectYear(e) {
     var m = this.props.moment;
-    m.year(year);
+    m.year(e.target.value);
     this.props.onChange(m);
 
   },

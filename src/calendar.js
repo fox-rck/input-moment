@@ -39,14 +39,31 @@ module.exports = React.createClass({
     );
 
     var weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
+    var months = moment.months(); //.monthsShort();
+    var years = = [];
+    for(var x = 0; x < m.year(); x++) {
+      years.push(x);
+    }
+    
     return (
       <div className={cx('m-calendar', this.props.className)}>
         <div className="toolbar">
           <button type="button" className="prev-month" onClick={this.prevMonth}>
             <i className={this.props.prevMonthIcon}/>
           </button>
-          <span className="current-date">{m.format('MMMM YYYY')}</span>
+          <span className="current-date">
+          <select value={m.format('MMMM')}>
+            {months.map((mn, i) => <option key={i} value={mn}>{mn}</option>)}
+          </select>
+          <select value={m.format('YYYY')}>
+            {years.map((y, i) => <option key={i} value={y}>{y}</option>)}
+          </select>
+
+          {m.format('MMMM YYYY')}
+
+
+
+          </span>
           <button type="button" className="next-month" onClick={this.nextMonth}>
             <i className={this.props.nextMonthIcon}/>
           </button>

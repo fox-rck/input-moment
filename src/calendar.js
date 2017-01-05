@@ -93,7 +93,6 @@ module.exports = React.createClass({
     var m = this.props.moment;
     console.log(m)
     var newDate = m.clone().month((e.target.value)+1);
-    newDate.diff(mStartDate, 'months', true);
     console.log(newDate);
     var monthsDiff = m.diff(newDate, 'months', true);
     this.props.onChange(this.props.moment.add(monthsDiff, 'month'));
